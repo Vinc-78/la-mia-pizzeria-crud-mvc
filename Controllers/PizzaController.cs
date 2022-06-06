@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using la_mia_pizzeria_static.Models;
+using System.Diagnostics;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -80,6 +81,19 @@ namespace la_mia_pizzeria_static.Controllers
             return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
 
         }
+
+        public IActionResult ModificaSecondaVersione(int id)
+        {
+            foreach (var ele in pizze.pizzas)
+            {
+                if (ele.Id == Convert.ToString(id)) { return View("ModificaSecondaVersione", pizze.pizzas[id - 1]); }
+
+            }
+
+            return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
+
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(Pizza Modificata)
@@ -153,5 +167,42 @@ namespace la_mia_pizzeria_static.Controllers
            
 
         }
+
+
+        public IActionResult EliminaSecondaVersione(int id)
+        {
+            int postIndexToRemove = -1;
+
+            // cerchiamo l'elemento da modificare con un determinato id con un foreach (poi in seguito vedremo qualcosa di più evoluto)
+            int currentIndex = 0;
+
+            foreach (var pizza in pizze.pizzas)
+            {
+                if (pizza.Id ==Convert.ToString(id))
+                {
+                    postIndexToRemove = currentIndex;
+                }
+
+                currentIndex++;
+            }
+
+            if (postIndexToRemove != -1)
+            {
+                pizze.pizzas.RemoveAt(postIndexToRemove);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+
+
+
+        }
+
+
+
+
     }
 }

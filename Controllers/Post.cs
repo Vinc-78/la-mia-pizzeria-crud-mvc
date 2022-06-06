@@ -8,10 +8,12 @@ namespace la_mia_pizzeria_static.Controllers
     {
         public IActionResult FormNuovaPizza()
         {
+            string nuovoId = Convert.ToString(PizzaController.pizze.pizzas.Count() + 1);
 
             Pizza nuovaPizza = new Pizza()
             {
-                Id = " ",
+                
+                Id = nuovoId,
                 Nome = " ",
                 Descrizione = " ",
                 ImgPath = " ",

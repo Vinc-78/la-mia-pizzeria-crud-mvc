@@ -120,7 +120,7 @@ namespace la_mia_pizzeria_static.Controllers
                 pizzaDaModificare.Nome = Modificata.Nome;
                 pizzaDaModificare.Descrizione = Modificata.Descrizione;
                 pizzaDaModificare.ImgPath = "/File/" + fileName;
-                pizzaDaModificare.Prezzo = Modificata.Prezzo;
+                pizzaDaModificare.Prezzo = Modificata.Prezzo.ToString();
                 
                 
 

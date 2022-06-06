@@ -173,7 +173,7 @@ namespace la_mia_pizzeria_static.Controllers
         {
             int postIndexToRemove = -1;
 
-            // cerchiamo l'elemento da modificare con un determinato id con un foreach (poi in seguito vedremo qualcosa di più evoluto)
+            // cerchiamo l'elemento da modificare con un determinato id con un foreach 
             int currentIndex = 0;
 
             foreach (var pizza in pizze.pizzas)

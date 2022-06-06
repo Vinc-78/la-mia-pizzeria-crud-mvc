@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "la mia pizzeria model";
+}
+
+
+@model la_mia_pizzeria_static.Models.Pizza
+
+@using (Html.BeginForm("CreaSchedaPizza", "Post", FormMethod.Post, new { enctype ="multipart/form-data"}))
+{
+        @Html.ValidationSummary()
+        <table cellpadding="0" cellspacing="0" class="center">
+            <tr>
+                <th colspan="2" align="center">Person Details</th>
+            </tr>
+            <tr>
+                <td>Id: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Id)
+                    @Html.ValidationMessage("Id") 
+                </td>
+            </tr>
+            <tr>
+                <td>Nome: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Nome)
+                    @Html.ValidationMessage("Nome") 
+                </td>
+            </tr>
+         
+            <tr>
+                <td>Descrizione: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Descrizione)
+                    @Html.ValidationMessage("Descrizione") 
+                </td>
+            </tr>
+
+             <tr>
+                <td>Foto: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.File, new { type = "file"})
+                    @Html.ValidationMessage("File") 
+                </td>
+            </tr>
+            <tr>
+                <td>Prezzo: </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Prezzo)
+                    @Html.ValidationMessage("Prezzo") 
+                </td>
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    }
+

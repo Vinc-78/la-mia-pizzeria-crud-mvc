@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Nuova Pizza Inserita";
+}
+
+@model la_mia_pizzeria_static.Models.Pizza
+
+<h2 class=text-center>Descrizione della pizza che hai scelto</h2>
+<h2><a href="@Url.Action("Index", "Pizza")">Torna a tutte le pizze</a></h2>
+
+<div class="col">
+    <div class="card">
+        <div class="row">
+            <div class="col-6">
+                <div class="card-img-top">
+                    <img id="showImg" src="@Url.Content(@Model.ImgPath)" alt="..." />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+
+                    <h5 class="card-title">@Model.Nome</h5>
+                    <p class="card-text">@Model.Descrizione</p>
+                    <p>@Model.Prezzo &euro;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

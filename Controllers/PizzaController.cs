@@ -59,38 +59,46 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Show(int id)
         {
-            foreach (var ele in pizze.pizzas)
+            //versione con foreach ( crticità con indice quando rimane 1 elemento )
+            //foreach (var ele in pizze.pizzas)
+            //{
+            //    if (ele.Id == Convert.ToString(id)) { return View("Show", pizze.pizzas[id-1]); }
+
+            //}
+
+            //return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
+
+            //versione con where ( testata anche con un solo elemento )
+            Pizza? PizzaDaMostrare = pizze.pizzas.Where(p => p.Id == Convert.ToString(id)).FirstOrDefault();
+            if (PizzaDaMostrare != null)
             {
-                if (ele.Id == Convert.ToString(id)) { return View("Show", pizze.pizzas[id-1]); }
-
+                return View("Show", PizzaDaMostrare);
             }
-
-            return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
+            else { return NotFound(" La pizza con l'id " + id + " non è stato trovato "); }
 
         }
 
-       
+
         public IActionResult Modifica(int id)
         {
-            foreach (var ele in pizze.pizzas)
+            
+            Pizza? PizzaDaModificare = pizze.pizzas.Where(p=>p.Id==Convert.ToString(id)).FirstOrDefault();
+            if (PizzaDaModificare != null)
             {
-                if (ele.Id == Convert.ToString(id)) { return View("Modifica", pizze.pizzas[id-1]); }
-
+                return View("Modifica", PizzaDaModificare);
             }
-
-            return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
+            else { return NotFound(" La pizza con l'id " + id + " non è stato trovato ");  }
 
         }
 
         public IActionResult ModificaSecondaVersione(int id)
         {
-            foreach (var ele in pizze.pizzas)
+            Pizza? PizzaDaModificare = pizze.pizzas.Where(p => p.Id == Convert.ToString(id)).FirstOrDefault();
+            if (PizzaDaModificare != null)
             {
-                if (ele.Id == Convert.ToString(id)) { return View("ModificaSecondaVersione", pizze.pizzas[id - 1]); }
-
+                return View("ModificaSecondaVersione", PizzaDaModificare);
             }
-
-            return NotFound(" La pizza con l'id " + id + " non è stato trovato ");
+            else { return NotFound(" La pizza con l'id " + id + " non è stato trovato "); }
 
         }
 

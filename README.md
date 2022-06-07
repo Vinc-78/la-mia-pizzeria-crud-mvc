@@ -5,6 +5,6 @@ All'interno del codice ci sono due versioni entrambi funzionanti, in un primo me
 mentre il secondo utilizza form asp-controller 
 
 Discorso analogo per l'elimina il primo utilizza una where sulla lista di pizze, 
-il secondo fa un foreach e cerca l'id corrispondente. 
+il secondo utilizza un foreach per la ricerca dell'id. 
 
 Ad entrambi i metodi si accede dalla view Show della pizza. con due coppie di tasti dedicate
